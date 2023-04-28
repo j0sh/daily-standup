@@ -6,7 +6,7 @@
 
 **Yesterday**: Yak shaving around getting exiv2 to cross-compile to wasm.
 
-**Today**: Get a basic project page up for the midjourney metadata embed. Hopefully nail down the wasm build.
+**Today**: Get a basic project page up for the midjourney metadata project. Hopefully nail down the wasm build.
 
 **Blockers**: Wasm build!
 
@@ -14,9 +14,9 @@
 
 For background, here is the project I have in mind:
 
-Embed job parameters from Midjourney as image metadata.
+**Embed job parameters from Midjourney as image metadata**
 
-Wherever the image goes, the prompt can go with it. Fewer cases of people asking, "hey share prompt plz" This would also be friendly to tooling - eg, extracting alt tags.
+Wherever the image goes, the prompt can go with it. Fewer cases of people asking, "hey share prompt plz" This would also be friendly to tooling - eg, extracting alt tags automatically.
 
 Random thought: is there a standard metadata for alt tags? XMP Description? What about exif?
 
@@ -26,9 +26,9 @@ Not gonna lie, it gives me an excuse to use this WASM thing too. Reflecting back
 
 #### Image metadata writer evaluation
 
-Looked at ffmpeg: image metadata support is not amazing. There is something, but unclear the full extent; in any case it would be cumbersome.
-exiftool: this is what everyone seems to use for metadata, but it's in perl. Not sure how I feel about shipping a [wasm perl interpreter](https://webperl.zero-g.net)
-exiv2: C++ so probably doable. Got it to compile on my box without too much fuss.
+1. ffmpeg: image metadata support is not amazing. There is something, but unclear the full extent; in any case it would be cumbersome.
+2. exiftool: this is what everyone seems to use for metadata, but it's in perl. Not sure how I feel about shipping a [wasm perl interpreter](https://webperl.zero-g.net)
+3. exiv2: C++ so probably doable. Got it to compile on my box without too much fuss.
 
 Okay, now on to cross-compiling for wasm...
 
