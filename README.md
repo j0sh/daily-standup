@@ -1,5 +1,25 @@
 # Daily Standup
 
+### 1 May 2023
+
+
+**Good News**: First Monday solo!
+
+**Last Friday**: Got the [project page](https://github.com/j0sh/midjourney-metadata) up for the Midjourney image metadata embed. Figured out a few more internal APIs that the MJ front-end uses. Didn't have a chance to actually dig into the WASM build.
+
+**Today**: Finish up the WASM build for the [exiv2](https://exiv2.org) image metadata tool. See the [April 28 notes](https://github.com/j0sh/daily-standup#28-april-2023) for more detail on that.
+
+**Blockers** Still the wasm build. Can't achieve the goal of embedding image metadata completely in-browser, without a metadata tool that also works in the browser.
+
+### Notes
+
+The Midjourney internal API is pretty easy to figure out, so I won't get into too much detail here; it's a good exercise for aspiring scrapers. But as is the case with all APIs, especially internal-facing ones, it is pretty interesting to examine just what is on display: upcoming features and experiments (video?!?), discarded features, internal structure, accumulated cruft.
+
+At a quick glance, the design of the API itself is actually pretty nice. The "latest updates" feed is heavily parameterized (resembling GraphQL but with a more sensible query string based approach), and there is an easy way query parameters for individual jobs in a batch. It would be interesting to know the data structures that are powering the feed on the backend, since indexing over arbitrary fields can get expensive. The only odd appendage I've found so far is that the job seed is found in a separate endpoint, which also returns a subset of job parameters that are available elsewhere... you can almost see the evolution of the API here.
+
+MJ could have made this a *lot* harder to deal with - see some of the heroic efforts in [TikTok reversing](https://www.nullpt.rs/reverse-engineering-tiktok-vm-1) - but I am hoping they won't feel the need to, partly to encourage the community to build neat things on top of it. In all likelihood, the team is probably slammed with scaling the service, and this stuff is the least of their concerns.
+
+
 ## 28 April 2023
 
 **Good News**: Day One
