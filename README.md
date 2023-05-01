@@ -22,7 +22,7 @@ MJ could have made this a *lot* harder to deal with - see some of the heroic eff
 
 ## 28 April 2023
 
-**Good News**: Day One
+**Good News**: [Day One](https://www.aboutamazon.com/news/company-news/2016-letter-to-shareholders)
 
 **Yesterday**: Yak shaving around getting exiv2 to cross-compile to wasm.
 
