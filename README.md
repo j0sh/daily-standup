@@ -1,5 +1,35 @@
 # Daily Standup
 
+### 5 May 2023
+
+**Good News**: Making solid progress on the wasm + deno build
+
+**Past Week**: WASM build for Exiv2 and friends complete.
+
+**Today**: Updated Midjourney metadata [project repo](https://github.com/j0sh/midjourney-metadata) with work so far. Parameterize image metadata writer to take a list of new XMP keys + values.
+
+### Notes
+
+It's been too long since the last update; I am failing at this daily standup thing.
+
+In any case, the WASM stuff is in pretty good shape. It's taken me longer than I care to admit - all week, basically - but I have a pretty comfortable grasp of things at this point:
+
+* Getting things even to *build* in emscripten, including exiv2 dependencies zlib and expat. [Work log](https://gist.github.com/j0sh/ddcd773f2d5066b2511096620702ece6)
+* [Running](https://github.com/j0sh/midjourney-metadata/blob/02e969f58526eb34e53a26f791bb410aa5145c39/reader.ts) emscripten-compiled stuff with Deno. This [Github comment](https://github.com/emscripten-core/emscripten/issues/13190) in particular turned out to be a lifesaver.
+* Passing in large blobs from JS to wasm. This is just using the built-in [Uint8Array-to-string](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html?highlight=memory#built-in-type-conversions) conversion. Presumably this involves copying data under the hood; this can probably be optimized out later.
+* Returning large blobs from wasm to JS. This [SO question](https://stackoverflow.com/questions/65566923/is-there-a-more-efficient-way-to-return-arrays-from-c-to-javascript) helped a lot, via [this Github issue](https://github.com/emscripten-core/emscripten/issues/5519).
+* [Full reproductibility](https://github.com/j0sh/midjourney-metadata/tree/02e969f58526eb34e53a26f791bb410aa5145c39/nixpkgs) via [Nixpkgs](https://github.com/NixOS/nixpkgs) and a [Nix shell](https://github.com/j0sh/midjourney-metadata/blob/02e969f/shell.nix)  (I am not cool enough yet to be using [Flakes](https://nixos.wiki/wiki/Flakes).)
+* Understanding *which* metadata format I should be using. [XMP](https://en.wikipedia.org/wiki/Extensible_Metadata_Platform) seems to be the way to go here, since Exif typically has a [fixed set](https://exiv2.org/tags.html) of tags.
+* [Reading](https://github.com/j0sh/midjourney-metadata/blob/02e969f58526eb34e53a26f791bb410aa5145c39/reader.cpp) Exif + XMP image metadata via Exiv2 API
+* [Writing](https://github.com/j0sh/midjourney-metadata/blob/02e969f58526eb34e53a26f791bb410aa5145c39/writer.cpp) XMP image metadata via Exiv2 API
+
+Functionally, what's left is:
+* Update metadata writer to take a list of keys + values to write
+* Wire in Midjourney, starting with the community showcase (Deno script)
+* Port stuff to a Chrome extension
+
+The emscripten compilation process is pretty slow (especially configure steps) but it's all tolerable for now. A bigger concern is size of the generated JS; right now it is a whopping 3.3 MB, and 1.2 MB gzipped. There are probably ways to cut this down - disabling unneeded features, compiler optimization flags, maybe [closure compiler](https://developers.google.com/closure/compiler) - but that's for later. And since this will ultimately be packaged as a self-contained browser extension, maybe it doesn't matter so much.
+
 ### 1 May 2023
 
 
