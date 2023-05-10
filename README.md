@@ -1,5 +1,19 @@
 # Daily Standup
 
+### 9 May 2023
+
+**Good News**: 
+
+**Yesterday** Spent way too much time looking at how Midjourney parameters interact.
+
+**Today**: Made a [Twitter thread](https://twitter.com/joshallmann/status/1656003646239412224) on what I learned yesterday. Updated the image metadata writer to take a list of keys and values ([commit](https://github.com/j0sh/midjourney-metadata/commit/cc6b45440ac23589ebad7a41d5728ebf49003a84)). Should have done this Friday, but better late than never.
+
+### Notes
+
+Would love to have better ways to visualize the latent space for a given Midjourney prompt and see how the output evolves as job parameters change. I have some ideas but afraid those will be a time sink (and relatively expensive).
+
+The tooling for interacting with MJ also needs to be better; it is a PITA to do everything through Discord, especially if you are enqueuing hundreds of images with very slight parameter changes. A bot that can manage these tasks would be pretty neat; it could also be controlled via the web. There's probably a product in that.
+
 ### 5 May 2023
 
 **Good News**: Making solid progress on the wasm + deno build
