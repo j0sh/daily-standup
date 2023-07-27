@@ -1,5 +1,15 @@
 # Daily Standup
 
+### 27 July 2023
+
+Daily Standup - LOL.
+
+Most of my my (semi-)daily updates are on [Twitter](https://twitter.com/joshallmann)
+
+Renamed this repo to "tech notes" which seems to fit a little better.
+
+Added a new note: a [friction log](nextjs-friction-log.md) for [NextJS](https://nextjs.org). Stripe has a good [writeup](https://dev.to/stripe/how-we-use-friction-logs-to-improve-products-at-stripe-i6p) on friction logs.
+
 ### 9 May 2023
 
 **Good News**: 
