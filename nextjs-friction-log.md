@@ -2,7 +2,7 @@
 
 **Author**: Josh Allmann ([email](mailto:josh_at_transfix_dot_ai)) ([web](https://transfix.ai))
 
-**Date**: 27 July 2023
+**Date**: 27 July 2023 (Updated 11 Aug 2023)
 
 ### Goal
 
@@ -51,6 +51,10 @@ Sure enough I found myself having to annotate my main page with "use client" as 
 Perfectly possible I am "holding it wrong" but docs did not really indicate what a *better* way would be. Literally all I have at this point is a `page.tsx` with an input text box.
 
 saw some stackoverflow comment about client components not supporting async very well which was concerning (can't find it anymore)
+
+**Forms clear after a reload-on-save** This is quite annoying to have to re-enter form information every time I save the code. (This form is not actually React state; it's just a plain JSX form with some onsubmit functionality.) Create-react-app does not clear forms, and it makes for a much smoother experience during development.
+
+**General feeling of slowness** Typing into forms, re-renders, etc all feel much slower for some reason, when compared to the equivalent in create-react-app. Don't have objective metrics for this point, but it *feels* sluggish.
 
 **'window' object is not defined**. what? okay, it's trying to render on server even with "use client" mode set. how tf is this supposed to work? I think [this post](https://blog.sethcorker.com/question/how-to-solve-referenceerror-next-js-window-is-not-defined/) helped me work around the issue, but it still seems silly for a *client* component.
 
